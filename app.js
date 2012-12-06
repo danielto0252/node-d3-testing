@@ -28,10 +28,10 @@ app.configure(function() {
 // DB credentials //
 var HOST = 'localhost';
 var PORT = 3306;
-var MYSQL_USER = 'root';
-var MYSQL_PASS = 'root';
+var MYSQL_USER = '';
+var MYSQL_PASS = '';
 var DATABASE = 'SmartClickR';
-var TABLE = 'Users';
+var TABLE = '';
 
 // Connect to the DB //
 var connection = mysql.createConnection({
@@ -61,9 +61,11 @@ var getResults = function(sqlCommand, callback) {
 
 
 app.get('/', function(request, response) {
-	var commandExample = 'SELECT * FROM ' + TABLE + ' WHERE User_ID = ' + connection.escape(47); //connection.escape prevents from sql injections :)
 	
-	getResults(commandExample, function(o){
+	var commandExample = 'SELECT * FROM ' + TABLE + ' WHERE User_ID = ' + connection.escape(47); //connection.escape prevents from sql injections :)
+	var command = ''; // Use whatever command you want!
+
+	getResults(command, function(o){
 		console.log(o);
 
 		//the method stub is response.render('page.jade', [things you want to send]);
