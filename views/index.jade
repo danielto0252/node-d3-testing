@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1= title
+  // you can reference the data that you send from 
+  // your app.js file by using #{blahh}
+  p Welcome  #{title}
+  | Welcome Testing D3 and Node!
+
+  p #{locals.name}
+
+  // there are no open and closing tags in jade
+  // tags are denoted as being nested through tabs
+  // or two spaces. BUT you must be consistent!!!
+
+
+  //example of a basic form
+  form(name='myForm')
+    label Name: 
+      input(type='text', name='username', id='user')
+    br
+    label Output:
+      input(type='text', name='output', id='out')
+
+  script
+    var example = 'you can write normal javascript here!'; 
+    var data = !{locals.data}; // !brackets lets you escape HTML characters
+    console.log(data);
+
